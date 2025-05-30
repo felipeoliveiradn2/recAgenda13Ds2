@@ -7,7 +7,7 @@
 
             <Label Margin="10"
             Text="Sobre"
-            TextColor="{StaticResource Primary}"
+            TextColor="{StaticResource Magenta}"
             FontFamily="Kalam"
             FontSize="50"
             HorizontalTextAlignment="Center"/>
@@ -15,24 +15,27 @@
             <!-- informações do projeto -->
 
             <Label Text="Agenda de Hospedagem"
-                   TextColor="{StaticResource Primary}"
+                   TextColor="{StaticResource Magenta}"
                    FontSize="18"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   Margin="0,50,0,0"/>
 
             <Label Text="Desenvolvido por: Felipe de Oliveira"
                    FontSize="16"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   Margin="0,200,0,0"/>
 
             <Label Text="Versão: 1.0.0"
                    FontSize="14"
                    HorizontalOptions="Center"/>
 
-            <Label Text="Ano: 2024"
+            <Label Text="Ano: 2025"
                    FontSize="14"
                    HorizontalOptions="Center"/>
-            <Button Text="Voltar"
-            Margin="20"
-            Clicked="Voltar_Sobre_Clicked"/>
+            <Button Text="Voltar" 
+                    Padding="10"
+                Clicked="Voltar_Sobre_Clicked"
+                Margin="0,200,0,0"/>
 
         </VerticalStackLayout>
     </ScrollView>

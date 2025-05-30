@@ -7,11 +7,12 @@
              BackgroundColor="LightGray">
 
     <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                         Spacing="10"
                          Padding="10">
         <Label Text="Cálculo da Diária!"
                FontFamily="Kalam"
                FontSize="30"
-               TextColor="{StaticResource Primary}"/>
+               TextColor="{StaticResource Magenta}"/>
 
         <!--frame aceita apenas um elemento dentro dele, então chamamos o VerticalStackLayout-->
         <Frame Padding="10">
@@ -22,7 +23,7 @@
                     <Label Grid.Row="0" Grid.Column="0"
                            Text="Adultos:" />
                     <Label Grid.Row="0" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
+                           TextColor="{StaticResource Magenta}"
                            Text="{Binding Value}"
                            BindingContext="{x:Reference stp_adultos}"/>
 
@@ -38,7 +39,7 @@
                     <Label Grid.Row="1" Grid.Column="0"
                            Text="Crianças:" />
                     <Label Grid.Row="1" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
+                           TextColor="{StaticResource Magenta}"
                            Text="{Binding Value}"
                            BindingContext="{x:Reference stp_criancas}"/>
 
@@ -49,21 +50,31 @@
                              Increment="1" />
 
                 </Grid>
+                <Frame Padding="10" Margin="10">
+                    <VerticalStackLayout>
+                        <Label Text="Escolha sua Suíte"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Magenta}"/>
 
-                <Label Text="Escolha sua Suíte" />
-
-                <Picker x:Name="pck_quarto"
-                        Title="Selecione sua Acomodação"
-                        ItemDisplayBinding="{Binding Descricao}"/>
+                        <Picker x:Name="pck_quarto"
+                                Title="Selecione sua Acomodação"
+                                HorizontalOptions="CenterAndExpand"
+                                ItemDisplayBinding="{Binding Descricao}"/>
+                    </VerticalStackLayout>
+                </Frame>
 
                 <Frame Padding="10"
                        Margin="10">
-                    <VerticalStackLayout>
-                        <Label Text="Período da Estadia" />
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Período da Estadia"
+                               TextTransform="Uppercase"
+                               FontSize="Subtitle"
+                               TextColor="{StaticResource Magenta}"/>
 
                         <!-- periodo da estadia, usando dtpck para aparecer o calendario no programa com checking-->
                         <!-- sempre que for selecionada a data, DataSelect é disparado programado no .cs -->
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
                             <Label Text="Check-in:" />
                             <DatePicker x:Name="dtpck_checking"                                      
                                         DateSelected="dtpck_checking_DateSelected" 
@@ -71,7 +82,7 @@
                         </HorizontalStackLayout>
 
                         <!-- periodo da estadia, usando dtpck para aparecer o calendario no programa com checking-->
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
                             <Label Text="Check-out:" />
                             <DatePicker x:Name="dtpck_checkout"
                                        Format="dd/MM/yyyy" />

@@ -1,3 +1,5 @@
+using recAgenda13Ds2.Models;
+
 namespace recAgenda13Ds2.Views;
 
 public partial class ContratacaoHospedagem : ContentPage
@@ -28,15 +30,30 @@ public partial class ContratacaoHospedagem : ContentPage
 		dtpck_checkout.MaximumDate = dtpck_checking.Date.AddMonths(6);
 
 	}
-	private void Button_Clicked(object sender, EventArgs e)
+	private async void Button_Clicked(object sender, EventArgs e)
 	{
 		try
-		{	//navigation pushAsync vai para a pagina hospedagem contratada
-			Navigation.PushAsync(new HospedagemContratada());
+		{   //navigation pushAsync vai para a pagina hospedagem contratada
 
+			//criou-se esse objeto para selecionar os itens de quartos, adultos, criancas e datas
+			Hospedagem h = new Hospedagem
+			{
+				QuartoSelecionado = (Quarto)pck_quarto.SelectedItem,
+				QntAdultos = Convert.ToInt32(stp_adultos.Value),
+				QntCriancas = Convert.ToInt32(stp_criancas.Value),
+				DataCheckIn = dtpck_checking.Date,
+				DataCheckOut = dtpck_checkout.Date
+			};
+
+			await Navigation.PushAsync(new HospedagemContratada()
+
+			{ //BindinContext = h irá enviar todo o código de h "amarrado" com binding 
+				BindingContext = h
+			});
+		
 		}catch (Exception ex)
 		{
-			DisplayAlert("Ops", ex.Message, "OK");
+			await DisplayAlert("Ops", ex.Message, "OK");
 		}
 	}
 
@@ -44,15 +61,14 @@ public partial class ContratacaoHospedagem : ContentPage
 
 		private async void SobreClicked(object sender, EventArgs e)
 		{
-			try
-			{
-				Navigation.PushAsync(new Sobre());
-			}
-			catch (Exception ex)
-			{
-				await DisplayAlert("Ops", ex.Message, "OK");
+		try
+		{
+			await Navigation.PushAsync(new Sobre());
+		}catch (Exception ex)
+		{
+			await DisplayAlert("Ops", ex.Message, "OK");
         }
-		}     
+	}     
 
     private void dtpck_checking_DateSelected(object sender, DateChangedEventArgs e)
     {
